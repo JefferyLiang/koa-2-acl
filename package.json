@@ -12,6 +12,10 @@
   ],
   "author": "Jeffery Liang",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JefferyLiang/koa-2-acl"
+  },
   "dependencies": {
     "js-yaml": "^3.10.0",
     "koa-unless": "^1.0.7",
