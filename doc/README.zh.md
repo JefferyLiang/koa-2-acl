@@ -148,6 +148,7 @@ ACL的规则定义了`koa-2-acl`处理请求的方式，因此确保它们有良
 在`koa-2-acl`中有2个方法。
 
 ### config[type: function, params: config { filename, path, yml, encoding, baseUrl, rules }, response {}]
+---
 
 这个方法用读取你的json文件的配置信息。当你不指定任何配置信息时，这个方法会去默认寻找你项目的根目录下的`nacl.json`文件
 
@@ -214,6 +215,8 @@ ACL的规则定义了`koa-2-acl`处理请求的方式，因此确保它们有良
 ```
 
 ### authorize [type: middleware]
+---
+
 启动这个方法，让`koa-2-acl`根据你设置的ACL规则去管理应用的请求。
 
 ```js
@@ -223,6 +226,8 @@ app.use(acl.authorize)
 ```
 
 ### unless [type: function, params: function or object]
+---
+
 默认情况下，任何没有被定义访问规则的路由都会被阻止，这意味着你不能访问这些路由，直到你为其定义控制规则。我们可以通过这个方法去指定一些路由路径，让它不受保护。更多有关于这个方法的信息可以去看[koa-unless](ttps://github.com/Foxandxss/koa-unless)
 
 ```js
