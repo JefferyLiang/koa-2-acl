@@ -1,0 +1,25 @@
+{
+  "name": "koa-2-acl",
+  "version": "0.0.2",
+  "description": "a koa 2 access control lists(koa-acl) project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "acl"
+  ],
+  "author": "Jeffery Liang",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "js-yaml": "^3.10.0",
+    "koa-unless": "^1.0.7",
+    "lodash": "^4.17.4",
+    "object-path": "^0.11.4"
+  }
+}
