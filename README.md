@@ -7,6 +7,10 @@ Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to
 
 This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
 
+## README LANGUAGE
+
+[中文文档](https://github.com/JefferyLiang/koa-2-acl/blob/master/doc/README.zh.md)
+
 ## What are ACL rules
 ACL is a set of rules that tell `koa-2-acl` how to handle the request made to your server a specific resource. Think of like road signs or traffic lights that control how your traffic flows in your aap. ACL rules are defined in JSON or yaml syntax.
 
@@ -84,7 +88,7 @@ Koa acl uses the configuration approach to define access levels.
 
 ## Configuration
 
-First stop is to create a file called `nacl.json` and place this in the root folder. This is the file where we will define the roles that can access our application, and the policies that restrict or give access to certain resource. Take a look at the example below.
+First step is to create a file called `nacl.json` and place this in the root folder. This is the file where we will define the roles that can access our application, and the policies that restrict or give access to certain resource. Take a look at the example below.
 
 ```json
 [{
@@ -135,7 +139,7 @@ koa-2-acl depends on the role of each authenticated user to pick the correspondi
   })
 
   // koa-2-acl middleware depends on the role
-  // the role can either be in ctx.request.decoded (jsonwebtoken) ro ctx.request.session (koa-session)
+  // the role can either be in ctx.request.decoded (jsonwebtoken) or ctx.request.session (koa-session)
 
   ROUTER.use(acl.authorize)
 ```
@@ -143,7 +147,7 @@ koa-2-acl depends on the role of each authenticated user to pick the correspondi
 ## API
 There are two API methods for koa-2-acl.
 
-**config[type: function, params: config { filename<string>, path<string>, yml<boolean>, encoding, baseUrl, rules }, response {}]**
+### config[type: function, params: config { filename<string>, path<string>, yml<boolean>, encoding, baseUrl, rules }, response {}]
 
 This methods loads the configuration json file. When this method it looks for `nacl.json` the root folder if path is not specified.
 
@@ -209,6 +213,30 @@ This methods loads the configuration json file. When this method it looks for `n
 
 ```
 
+### authorize [type: middleware]
+This is the middleware that manages your application requests based on the role and acl rules.
+
+```js
+
+app.use(acl.authorize)
+
+```
+
+### unless [type: function, params: function or object]
+By default any route that has no defined policy against it is blocked, this means you cannot access this route untill you specify a policy. This method enables you to exclude unprotected routes. This method users koa-2-acl package to achive this functionality. For more defails on its usage follow this link [koa-unless](https://github.com/Foxandxss/koa-unless)
+
+```js
+
+  // assuming we want to hide /auth/google from koa-2-acl
+
+  app.use(acl.authorize.unless({ path: ['/auth/google'] }))
+
+```
+
+Anytime that this route is visited, unless method will exclude it from being passed though our middleware.
+
+**N/B** You don't have to install `koa-unless` it has already been included into the project.
+
 ## Response
 This is the custom error you would like returned when a user is define access to a resource. This error will be bound to status code of `403`
 
@@ -230,30 +258,6 @@ This is the custom error you would like returned when a user is define access to
 
 ```
 
-## authorize [type: middleware]
-This is the middleware that manages your application requests based on the role and acl rules.
-
-```js
-
-app.use(acl.authorize)
-
-```
-
-## unless [type: function, params: function or object]
-By default any route that has no defined policy against it is blocked, this means you cannot access this route untill you specify a policy. This method enables you to exclude unprotected routes. This method users koa-2-acl package to achive this functionality. For more defails on its usage follow this link [koa-unless](https://github.com/Foxandxss/koa-unless)
-
-```js
-
-  // assuming we want to hide /auth/google from koa-2-acl
-
-  app.use(acl.authorize.unless({ path: ['/auth/google'] }))
-
-```
-
-Anytime that this route is visited, unless method will exclude it from being passed though our middleware.
-
-**N/B** You don't have to install `koa-unless` it has already been included into the project.
-
 ## Example
 
 Install koa-2-acl
@@ -264,7 +268,7 @@ $ npm i koa-2-acl -S
 
 ```
 
-Create `acl.json` in your root folder
+Create `nacl.json` in your root folder
 
 ```json
 [{
