@@ -2,9 +2,10 @@
 
 `koa-2-acl`是一个用于控制你koa服务器的访问控制列表中间件。它利用ACL的规则保护你的服务器免受无授权的访问。通过ACL可以控制不同的用户组的访问权限与访问类型。当我们的的资源受到请求的时候，`koa-2-acl`会根据相对应的ACL规则去验证请求者，是否有资格请求对应的资源。
 
-[![NPM version](https://img.shields.io/npm/v/brick.js.svg?style=flatl)](https://www.npmjs.com/package/koa-2-acl)
-[![NODE version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![NPM version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![node](https://img.shields.io/node/v/koa-2-acl.svg)](https://www.npmjs.com/package/koa-2-acl)
 [![NPM Downloads](https://img.shields.io/npm/dm/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![Mozilla Add-on](https://img.shields.io/amo/stars/koa-2-acl.svg)](https://www.npmjs.com/package/koa-2-acl)
 
 本中间件是参考[express-acl](https://github.com/nyambati/express-acl)的acl中间件。
 
