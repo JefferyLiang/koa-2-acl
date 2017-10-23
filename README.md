@@ -4,7 +4,7 @@ Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to
 
 [![NPM version](https://img.shields.io/npm/v/brick.js.svg?style=flatl)](https://www.npmjs.com/package/koa-2-acl)
 [![NODE version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
-[![NPM Downloads](https://img.shields.io/npm/dm/koa-a-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![NPM Downloads](https://img.shields.io/npm/dm/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
 
 This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
 

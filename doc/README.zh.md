@@ -4,7 +4,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/brick.js.svg?style=flatl)](https://www.npmjs.com/package/koa-2-acl)
 [![NODE version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
-[![NPM Downloads](https://img.shields.io/npm/dm/koa-a-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![NPM Downloads](https://img.shields.io/npm/dm/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
 
 本中间件是参考[express-acl](https://github.com/nyambati/express-acl)的acl中间件。
 
