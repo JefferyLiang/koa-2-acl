@@ -6,6 +6,8 @@ Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to
 
 This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
 
+And I will write the middleware test case soon.
+
 ## README LANGUAGE
 
 [中文文档](https://github.com/JefferyLiang/koa-2-acl/blob/master/doc/README.zh.md)
@@ -15,7 +17,7 @@ ACL is a set of rules that tell `koa-2-acl` how to handle the request made to yo
 
 **Example**
 ```json
-[{
+[{  
   "group": "admin",
   "permissions": [{
     "resource": "users",

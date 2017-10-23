@@ -6,6 +6,8 @@
 
 本中间件是参考[express-acl](https://github.com/nyambati/express-acl)的acl中间件。
 
+我会在之后补上测试代码(如果我这个周末有空的话)。
+
 ## README LANGUAGE
 
 [English](https://github.com/JefferyLiang/koa-2-acl/blob/master/README.md)
