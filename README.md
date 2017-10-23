@@ -3,7 +3,9 @@
 Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to your koa server. It make use of ACL rules to protect your sever from unanthorized access. ACLs defines which user groups are granted access and the type of access they have against a specified resource. When a request is received against a resource. `koa-2-acl` checks the corresponding ACL policy to verify if the requester has the necessary access permissions.
 
 [![NPM version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![node](https://img.shields.io/node/v/koa-2-acl.svg)](https://www.npmjs.com/package/koa-2-acl)
 [![NPM Downloads](https://img.shields.io/npm/dm/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
+[![Mozilla Add-on](https://img.shields.io/amo/stars/koa-2-acl.svg)](https://www.npmjs.com/package/koa-2-acl)
 
 This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
 
