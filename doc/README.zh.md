@@ -7,6 +7,10 @@
 
 本中间件是参考[express-acl](https://github.com/nyambati/express-acl)的acl中间件。
 
+我做的只是让`express-acl`能够在 Koa 2 下运行(顺便乱翻译了一个中文版的文档) 。
+
+如果你觉得这个中间件有用，希望能够点个星星。
+
 我会在之后补上测试代码(如果我这个周末有空的话)。
 
 ## README LANGUAGE

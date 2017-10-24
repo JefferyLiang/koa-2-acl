@@ -7,6 +7,10 @@ Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to
 
 This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
 
+I just make the `express-acl` can run in koa 2.
+
+If you think is useful, you can get this middleware a star.
+
 And I will write the middleware test case soon.
 
 ## README LANGUAGE

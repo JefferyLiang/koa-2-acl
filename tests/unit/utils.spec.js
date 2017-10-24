@@ -34,7 +34,7 @@ describe('Testing Utils', () => {
     ctx.response = httpMocks.createResponse()
 
     next = function () {
-      ctx.response.send(response.success)
+      return
     }
 
     ctx.throw = function (status, response) {
@@ -69,7 +69,7 @@ describe('Testing Utils', () => {
 
   })
 
-  describe('utils.deny', () => {
+  describe('Utils.deny', () => {
 
     it('should return default message when called with status', () => {
       utils.deny(ctx, 403)
@@ -108,19 +108,19 @@ describe('Testing Utils', () => {
 
   })
 
-  // describe('Utils.whenGlobAndActionAllow', () => {
+  describe('Utils.whenGlobAndActionAllow', () => {
 
-  //   context('When the Methods are a string', () => {
+    context('When the Methods are a string', () => {
       
-  //     it('should call next when method is string and "*"', () => {
-  //       utils.whenGlobAndActionAllow(ctx, next, null, '*')
-  //       data = ctx.body
-  //       assert(data, true)
-  //       expect(data).to.be.an('object')
-  //       assert.deepEqual(data, response.success)
-  //     })
+      it('should call next when method is string and "*"', () => {
+        utils.whenGlobAndActionAllow(ctx, next, null, '*')
+        data = ctx.body
+        assert(data, true)
+        expect(data).to.be.an('object')
+        assert.deepEqual(data, response.success)
+      })
 
-  //   })
+    })
 
-  // })
+  })
 })

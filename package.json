@@ -4,7 +4,7 @@
   "description": "a koa 2 access control lists(koa-acl) project",
   "main": "index.js",
   "scripts": {
-    "test": "exit"
+    "test": "./node_modules/.bin/_mocha ./tests/unit/**.spec.js"
   },
   "keywords": [
     "koa",
