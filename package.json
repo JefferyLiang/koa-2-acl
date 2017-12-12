@@ -1,6 +1,6 @@
 {
   "name": "koa-2-acl",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "a koa 2 access control lists(koa-acl) project",
   "main": "index.js",
   "scripts": {
