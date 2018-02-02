@@ -136,7 +136,9 @@ ACL的规则定义了`koa-2-acl`处理请求的方式，因此确保它们有良
   ROUTER.use((ctx, next) => {
     const token = ctx.request.headers['authorization']
     if (token) {
-      jwt.verify(token, key, (err, decoded) => {
+      // token like this 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhMzljYTZkNzliOWZkYmJjZjM1OGI5MiIsIm5pY2tuYW1lIjoieXBhZG1pbiIsInJvbGUiOiJhZG1pbiIsImNvbXBhbnkiOiI1YTM5YzM5MmE1ZmYyMGI2YWI0MmE1NTkiLCJpYXQiOjE1MTc1NTIyMTYsImV4cCI6MTUxNzU5NTQxNn0.M6IqUvKAmnSMJ0Kb-2UIeUmLrv69Kuhf-zibsWt_uYk'
+      let codeStr = token.split(" ")[1]
+      jwt.verify(codeStr, key, (err, decoded) => {
         if (err) ctx.throw(err)
         ctx.request.decoded = decoded
       })
