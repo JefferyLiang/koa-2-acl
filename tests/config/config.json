@@ -1,7 +1,7 @@
 [{
   "group": "user",
   "permissions": [{
-    "resource": "users",
+    "resource": "users/*",
     "methods": [ "GET", "POST", "PUT" ],
     "action": "deny"
   }]
