@@ -9,9 +9,7 @@ This porject refer to [express-acl](https://github.com/nyambati/express-acl) pro
 
 I just make the `express-acl` can run in koa 2.
 
-If you think is useful, you can get this middleware a star.
-
-And I will write the middleware test case soon.
+If this middleware is useful to you and you want, you can star it.
 
 ## README LANGUAGE
 
@@ -20,12 +18,18 @@ And I will write the middleware test case soon.
 ## What are ACL rules
 ACL is a set of rules that tell `koa-2-acl` how to handle the request made to your server a specific resource. Think of like road signs or traffic lights that control how your traffic flows in your aap. ACL rules are defined in JSON or yaml syntax.
 
+### Important
+
+Resource property has been changed from using string to routes, this change was made to support `subrouting` funcitionality, this means if your resource was `users` which gave access to all routes starting with `users`, it should be changed to `users/*`. The asterisk informs the package to match all the routes that starts with `users`.
+
+Resource also can include params i.e `/users/:id` this will match routes such as `users/45`, `users/42`, where 42 and 45 are considered `:id` section on the resource.
+
 **Example**
 ```json
 [{  
   "group": "admin",
   "permissions": [{
-    "resource": "users",
+    "resource": "users/*",
     "methods": [ "POST", "GET", "PUT" ],
     "action": "allow"
   }]
@@ -37,7 +41,7 @@ YAML syntax
 ```yaml
 - group: user
   permissions:
-    - resource: users
+    - resource: users/*
       methods:
         - GET
         - POST
@@ -80,7 +84,7 @@ copy the lib folder to your project and then require `acl.js`
 
 ```js
 
-const acl = require('./lib/acl')
+const acl = require('./lib')
 
 // ES6
 
@@ -107,7 +111,7 @@ First step is to create a file called `nacl.json` and place this in the root fol
 }, {
   "group": "user",
   "permissions": [{
-    "resource": "users",
+    "resource": "users/*",
     "methods": [ "POST", "GET", "PUT" ],
     "action": "deny"
   }]
@@ -120,8 +124,10 @@ Property | Type | Description
 | --- | --- | --- |
 **group** | `string` | This property defines the access group to which a user can belong to e.g `user`,`guest`,`admin`,`tranier`. This may vary depending with the architecture of your application.
 **permissions** | `Array` | This property contains an array of objects that define the resource exposed to a group and the methods allowed/denied.
+*resource* | `String` | This is the route the permissions will be applied against. This property can be either `*` which applies to all routes, `api/users` which will apply permisstion to routes `api/users` or `api/users/*` which applies permission to all routes that prefix `api/users`
 **methods** | `string or Array` | This are http methods that a user is allowed or denied from executing. `[ "POST", "GET", "PUT" ]`. use  glob `*` if you want to include all http methods.
 **action**  | `string`  | This property tell koa-2-acl what action to perform on the permission given. Using the above example, the user policy specifies a deny action, meaning all traffic on route `/api/users` for methods `GET, PUT, POST` are denied, but the rest allowed. And for the admin, all traffic for all resource is allowed.
+subRoutes | `Array` | This are permissions that should be used on subroutes of a specified prefix. It is helpfull when certain routes under a prefix requires different access definitions.
 
 ## How to define effective ACL rules
 ACLs define the way requests will be handled by koa-2-acl, therefore its important to ensure that they are well designed to maximise efficiency. For more details follow this [link](https://github.com/andela-thomas/express-acl/wiki/How-to-write-effective-ACL-rules)

@@ -9,9 +9,7 @@
 
 我做的只是让`express-acl`能够在 Koa 2 下运行(顺便乱翻译了一个中文版的文档) 。
 
-如果你觉得这个中间件有用，希望能够点个星星。
-
-我会在之后补上测试代码(如果我这个周末有空的话)。
+如果这个中间件对你来说是有帮助的，可以给本项目一个star。
 
 ## README LANGUAGE
 
@@ -19,6 +17,10 @@
 
 ## 什么是ACL规则
 ACL是一组由开发者定义的规则，这些规则告诉`koa-2-acl`怎么去处理后台接收到的对于某些特定资源的请求。就想路牌和交通灯一样，控你应用中的数据流向。ACL的规则通常用JSON或者yaml的语法进行定义
+
+## 注意
+
+`resource`的设置发生了变化，这个变化是为了支持新的功能---`subrouting`。这一次改变意味着如果你希望你能够让 `users` 下的资源能备访问或者禁止访问，你需要使用 `users/*` 去替换原本的 `users`。现在能够匹配 `params`,如: `users/:id` 能够匹配 `users/12`, `users/42`等路径。
 
 **例子**
 ```json
@@ -76,15 +78,15 @@ $ git clone https://github.com/JefferyLiang/koa-2-acl.git
 
 ```
 
-复制lib文件夹到你的项目之中，然后引入`acl.js`
+复制lib文件夹到你的项目之中，然后引入`/lib/index.js`
 
 ```js
 
-const acl = require('./lib/acl')
+const acl = require('./lib')
 
 // ES6
 
-import acl from './lib/acl'
+import acl from './lib'
 
 ```
 
@@ -119,8 +121,11 @@ import acl from './lib/acl'
 | --- | --- | ---|
 **group** | `string` | 这个属性定义用户属于哪个访问组，这些用户可能是`user`,`guest`,`admin`,`tranier`。怎么去定义这些组，请根据你应用的实际情况进行定义。
 **permissions** | `Array` | 这个属性定义了该访问组允许(拒绝)访问的资源和请求方法的对象数组。
+**resource** | `String` | 如果你希望能匹配到所有路径可以使用 `*`。如果你希望匹配所有以 `api/users` 开头的请求并且设置了基础路径为 `api`的话, 则可以设置成 `users/*`
 **methods** | `string or Array` | 这个属性定义该访问组能够执行的http访问的类型。`["POST","GET","PUT"]`。如果你想访问组可以使用所有的请求方法，可以使用`*`去定义这个属性
 **action**  | `string`  | 这个属性告诉`koa-2-acl`对上述定义的资源拥有什么样的权限`allow`(允许访问)或`deny`(拒绝访问)
+subRoutes | `Array` | 在当前的Permission下，指定子路径配置新的规则
+
 
 ## 怎么定义高质量的ACL规则
 
