@@ -1,11 +1,11 @@
 # koa-2-acl
 
-Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to your koa server. It make use of ACL rules to protect your sever from unanthorized access. ACLs defines which user groups are granted access and the type of access they have against a specified resource. When a request is received against a resource. `koa-2-acl` checks the corresponding ACL policy to verify if the requester has the necessary access permissions.
+Koa 2 Access Control Lists (koa-2-acl) enable you to manage the requests made to your koa server. It makes use of ACL rules to protect your server from unauthorized access. ACLs defines which user groups are granted access and the type of access they have against a specified resource. When a request is received against a resource. `koa-2-acl` checks the corresponding ACL policy to verify if the requester has the necessary access permissions.
 
 [![NPM version](http://img.shields.io/npm/v/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
 [![NPM Downloads](https://img.shields.io/npm/dm/koa-2-acl.svg?style=flat)](https://www.npmjs.com/package/koa-2-acl)
 
-This porject refer to [express-acl](https://github.com/nyambati/express-acl) project
+This project refers to [express-acl](https://github.com/nyambati/express-acl) project
 
 I just make the `express-acl` can run in koa 2.
 
@@ -16,13 +16,13 @@ If this middleware is useful to you and you want, you can star it.
 [中文文档](https://github.com/JefferyLiang/koa-2-acl/blob/master/doc/README.zh.md)
 
 ## What are ACL rules
-ACL is a set of rules that tell `koa-2-acl` how to handle the request made to your server a specific resource. Think of like road signs or traffic lights that control how your traffic flows in your aap. ACL rules are defined in JSON or yaml syntax.
+ACL is a set of rules that tell `koa-2-acl` how to handle the request made to your server a specific resource. Think of like road signs or traffic lights that control how your traffic flows in your app. ACL rules are defined in JSON or yaml syntax.
 
 ### Important
 
-Resource property has been changed from using string to routes, this change was made to support `subrouting` funcitionality, this means if your resource was `users` which gave access to all routes starting with `users`, it should be changed to `users/*`. The asterisk informs the package to match all the routes that starts with `users`.
+Resource property has been changed from using string to routes, this change was made to support `subrouting` functionality, this means if your resource was `users` which gave access to all routes starting with `users`, it should be changed to `users/*`. The asterisk informs the package to match all the routes that start with `users`.
 
-Resource also can include params i.e `/users/:id` this will match routes such as `users/45`, `users/42`, where 42 and 45 are considered `:id` section on the resource.
+The Resource property also can include params i.e `/users/:id` this will match routes such as `users/45`, `users/42`, where 42 and 45 are considered `:id` section on the resource.
 
 **Example**
 ```json
@@ -98,7 +98,7 @@ Koa acl uses the configuration approach to define access levels.
 
 ## Configuration
 
-First step is to create a file called `nacl.json` and place this in the root folder. This is the file where we will define the roles that can access our application, and the policies that restrict or give access to certain resource. Take a look at the example below.
+The first step is to create a file called `nacl.json` and place this in the root folder. This is the file where we will define the roles that can access our application and the policies that restrict or give access to a certain resource. Take a look at the example below.
 
 ```json
 [{
@@ -122,12 +122,12 @@ In the example above we have defined an ACL with two policies with roles, `user`
 
 Property | Type | Description
 | --- | --- | --- |
-**group** | `string` | This property defines the access group to which a user can belong to e.g `user`,`guest`,`admin`,`tranier`. This may vary depending with the architecture of your application.
+**group** | `string` | This property defines the access group to which a user can belong to e.g `user`,`guest`,`admin`,`tranier`. This may vary depending on the architecture of your application.
 **permissions** | `Array` | This property contains an array of objects that define the resource exposed to a group and the methods allowed/denied.
-*resource* | `String` | This is the route the permissions will be applied against. This property can be either `*` which applies to all routes, `api/users` which will apply permisstion to routes `api/users` or `api/users/*` which applies permission to all routes that prefix `api/users`
-**methods** | `string or Array` | This are http methods that a user is allowed or denied from executing. `[ "POST", "GET", "PUT" ]`. use  glob `*` if you want to include all http methods.
-**action**  | `string`  | This property tell koa-2-acl what action to perform on the permission given. Using the above example, the user policy specifies a deny action, meaning all traffic on route `/api/users` for methods `GET, PUT, POST` are denied, but the rest allowed. And for the admin, all traffic for all resource is allowed.
-subRoutes | `Array` | This are permissions that should be used on subroutes of a specified prefix. It is helpfull when certain routes under a prefix requires different access definitions.
+*resource* | `String` | This is the route the permissions will be applied against. This property can be either `*` which applies to all routes, `api/users` which will apply permissions to routes `api/users` or `api/users/*` which applies permission to all routes that prefix `api/users`
+**methods** | `string or Array` | This are http methods that a user is allowed or denied from executing. `[ "POST", "GET", "PUT" ]`. Use  glob `*` if you want to include all http methods.
+**action**  | `string`  | This property tell koa-2-acl what action to perform on the permission given. Using the above example, the user policy specifies a deny action, meaning all traffic on route `/api/users` for methods `GET, PUT, POST` is denied, but the rest allowed. And for the admin, all traffic for all resource is allowed.
+subRoutes | `Array` | This is permissions that should be used on subroutes of a specified prefix. It is helpful when certain routes under a prefix require different access definitions.
 
 ## How to define effective ACL rules
 ACLs define the way requests will be handled by koa-2-acl, therefore its important to ensure that they are well designed to maximise efficiency. For more details follow this [link](https://github.com/andela-thomas/express-acl/wiki/How-to-write-effective-ACL-rules)
@@ -163,7 +163,7 @@ There are two API methods for koa-2-acl.
 
 ### config[type: function, params: config { filename<string>, path<string>, yml<boolean>, encoding, baseUrl, rules }, response {}]
 
-This methods loads the configuration json file. When this method it looks for `nacl.json` the root folder if path is not specified.
+This method loads the configuration json file. When this method it looks for `nacl.json` the root folder if path parameter is not specified.
 
 **config**
 - **filename**: Name of the ACL rule file e.g nacl.json
@@ -205,7 +205,7 @@ This methods loads the configuration json file. When this method it looks for `n
   })
 
   // When you use rules api, nacl will **not** to find the json/yaml file, so you can save your acl-rules with any Database
-  // The default role allows you to specify which role users will assumne if they are not assigned any
+  // The default role allows you to specify which role users will assume if they are not assigned any
 
   acl.config({
     defaultRole: 'anonymous'
@@ -237,7 +237,7 @@ app.use(acl.authorize)
 ```
 
 ### unless [type: function, params: function or object]
-By default any route that has no defined policy against it is blocked, this means you cannot access this route untill you specify a policy. This method enables you to exclude unprotected routes. This method users koa-2-acl package to achive this functionality. For more defails on its usage follow this link [koa-unless](https://github.com/Foxandxss/koa-unless)
+By default any route that has no defined policy against it is blocked, this means you cannot access this route until you specify a policy. This method enables you to exclude unprotected routes. This method users koa-2-acl package to achieve this functionality. For more details on its usage follow this link [koa-unless](https://github.com/Foxandxss/koa-unless)
 
 ```js
 
@@ -252,7 +252,7 @@ Anytime that this route is visited, unless method will exclude it from being pas
 **N/B** You don't have to install `koa-unless` it has already been included into the project.
 
 ## Response
-This is the custom error you would like returned when a user is define access to a resource. This error will be bound to status code of `403`
+This is the custom error you would like returned when a user is defined access to a resource. This error will be bound to the status code of `403`
 
 ```js
 
