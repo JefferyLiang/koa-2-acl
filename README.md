@@ -330,4 +330,4 @@ Add the acl middleware
 ```
 
 ## Contributions
-Pull requests are welcome. If you are adding a new feature or fixing an as-yet-untested use case, please consider writing unit test to cover your change(s). For more information visit the contributions [pages](https://github.com/JefferyLiang/koa-2-acl/wiki)----I will write the WIKI page soon.
+Pull requests are welcome. If you are adding a new feature or fixing an as-yet-untested use case, please consider writing unit test to cover your change(s).
