@@ -4,7 +4,8 @@
   "description": "a koa 2 access control lists(koa-acl) project",
   "main": "./lib",
   "scripts": {
-    "test": "./node_modules/.bin/_mocha ./tests/**/**.spec.js"
+    "test": "npm run lint && ./node_modules/.bin/_mocha ./tests/**/**.spec.js",
+    "lint": "eslint .js lib"
   },
   "keywords": [
     "koa",
@@ -27,8 +28,17 @@
     "chai-spies": "^0.7.1",
     "codacy-coverage": "^2.1.1",
     "coveralls": "^3.0.2",
+    "eslint": "4",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
     "istanbul": "^0.4.5",
     "mocha": "^4.1.0",
     "node-mocks-http": "^1.7.0"
+  },
+  "bin": {
+    "eslint": "node_modules/.bin/eslint"
   }
 }
