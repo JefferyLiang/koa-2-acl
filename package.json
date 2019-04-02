@@ -20,7 +20,7 @@
   "dependencies": {
     "js-yaml": "^3.12.0",
     "koa-unless": "^1.0.7",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "object-path": "^0.11.4"
   },
   "devDependencies": {
