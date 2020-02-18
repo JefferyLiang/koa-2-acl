@@ -81,7 +81,7 @@ $ git clone https://github.com/JefferyLiang/koa-2-acl.git
 
 ```
 
-copy the lib folder to your project and then require `acl.js`
+copy the lib folder to your project and then require `index.js`
 
 ```js
 
@@ -89,7 +89,7 @@ const acl = require('./lib')
 
 // ES6
 
-import acl from './lib/acl'
+import acl from './lib/index'
 
 ```
 
